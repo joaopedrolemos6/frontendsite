@@ -27,7 +27,7 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('https://backendsite-production.up.railway.app/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -76,7 +76,11 @@ const ContactForm: React.FC = () => {
       <h3 className="text-2xl font-bold text-primary mb-6">Solicite um Orçamento</h3>
 
       {submitStatus && (
-        <div className={`mb-6 p-4 rounded-lg ${submitStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+        <div
+          className={`mb-6 p-4 rounded-lg ${
+            submitStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+          }`}
+        >
           {submitStatus.message}
         </div>
       )}
@@ -84,7 +88,9 @@ const ContactForm: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="space-y-2">
-            <label htmlFor="name" className="block text-dark font-medium">Nome*</label>
+            <label htmlFor="name" className="block text-dark font-medium">
+              Nome*
+            </label>
             <input
               id="name"
               name="name"
@@ -98,7 +104,9 @@ const ContactForm: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-dark font-medium">E-mail*</label>
+            <label htmlFor="email" className="block text-dark font-medium">
+              E-mail*
+            </label>
             <input
               id="email"
               name="email"
@@ -112,7 +120,9 @@ const ContactForm: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="whatsapp" className="block text-dark font-medium">WhatsApp*</label>
+            <label htmlFor="whatsapp" className="block text-dark font-medium">
+              WhatsApp*
+            </label>
             <input
               id="whatsapp"
               name="whatsapp"
@@ -126,7 +136,9 @@ const ContactForm: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="company" className="block text-dark font-medium">Empresa</label>
+            <label htmlFor="company" className="block text-dark font-medium">
+              Empresa
+            </label>
             <input
               id="company"
               name="company"
@@ -140,7 +152,9 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div className="space-y-2 mb-6">
-          <label htmlFor="message" className="block text-dark font-medium">Mensagem*</label>
+          <label htmlFor="message" className="block text-dark font-medium">
+            Mensagem*
+          </label>
           <textarea
             id="message"
             name="message"
