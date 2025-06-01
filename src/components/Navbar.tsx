@@ -1,110 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React from 'react';
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
-  };
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center">
-          {/* Logo + Texto */}
-          <div className="flex items-center">
-            <img
-              src="/logo.png"
-              alt="Logo"
-              className="h-10 md:h-12 mr-2"
-            />
-            <span
-              className={`font-bold text-xl md:text-2xl ${
-                isScrolled ? 'text-primary' : 'text-white'
-              }`}
-            >
-              LICITUM
-            </span>
+    <footer className="bg-[#0f172a] text-white">
+      <div className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Logo e Descrição */}
+          <div>
+            <div className="flex items-center mb-6">
+              <img
+                src="/logo.png" // 👈 funciona normalmente no Vite se estiver na pasta public
+                alt="Logo Licitum"
+                width={32}
+                height={32}
+                className="mr-2"
+              />
+              <span className="font-bold text-xl">LICITUM</span>
+            </div>
+
+            <p className="text-white/70 mb-4">
+              Soluções tecnológicas inteligentes para impulsionar o crescimento do seu negócio.
+            </p>
+
+            <div className="flex space-x-4 mt-6">
+              {/* LinkedIn */}
+              <a href="#" className="text-white/60 hover:text-white transition-colors" aria-label="LinkedIn">
+                {/* SVG */}
+              </a>
+
+              {/* Instagram */}
+              <a href="#" className="text-white/60 hover:text-white transition-colors" aria-label="Instagram">
+                {/* SVG */}
+              </a>
+
+              {/* Facebook */}
+              <a href="#" className="text-white/60 hover:text-white transition-colors" aria-label="Facebook">
+                {/* SVG */}
+              </a>
+            </div>
           </div>
 
-          {/* Menu Desktop */}
-          <div className="hidden md:flex space-x-8">
-            {['services', 'about', 'testimonials', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`font-medium transition-colors ${
-                  isScrolled
-                    ? 'text-dark hover:text-primary'
-                    : 'text-white hover:text-gray-metal'
-                } capitalize`}
-              >
-                {item === 'testimonials'
-                  ? 'Depoimentos'
-                  : item === 'services'
-                  ? 'Serviços'
-                  : item === 'about'
-                  ? 'Sobre'
-                  : 'Contato'}
-              </button>
-            ))}
+          {/* Serviços */}
+          <div>
+            <h4 className="font-semibold text-lg mb-6">Serviços</h4>
+            <ul className="space-y-3">
+              <li><a href="#services" className="text-white/60 hover:text-white transition-colors">Automação de Processos</a></li>
+              <li><a href="#services" className="text-white/60 hover:text-white transition-colors">Atendentes Virtuais</a></li>
+              <li><a href="#services" className="text-white/60 hover:text-white transition-colors">Landing Pages</a></li>
+              <li><a href="#services" className="text-white/60 hover:text-white transition-colors">Marketing Digital</a></li>
+              <li><a href="#services" className="text-white/60 hover:text-white transition-colors">Gestão de Tráfego Pago</a></li>
+            </ul>
           </div>
 
-          {/* Menu Mobile Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`${isScrolled ? 'text-primary' : 'text-white'}`}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          {/* Links Úteis */}
+          <div>
+            <h4 className="font-semibold text-lg mb-6">Links Úteis</h4>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Blog</a></li>
+              <li><a href="#about" className="text-white/60 hover:text-white transition-colors">Sobre Nós</a></li>
+              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Termos de Serviço</a></li>
+              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Política de Privacidade</a></li>
+            </ul>
+          </div>
+
+          {/* Contato */}
+          <div>
+            <h4 className="font-semibold text-lg mb-6">Contato</h4>
+            <ul className="space-y-3">
+              <li className="flex items-center text-white/60">
+                📧&nbsp;
+                <a href="mailto:contatolicitum@gmail.com" className="hover:text-white transition-colors">
+                  contatolicitum@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center text-white/60">
+                📞&nbsp;
+                <a href="tel:+5583996768141" className="hover:text-white transition-colors">
+                  (83) 99676-8141
+                </a>
+              </li>
+              <li className="flex items-center text-white/60">
+                📍&nbsp;
+                <span>Av. Gov. Flavio Ribeiro Coutinho, 500, João Pessoa - PB</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden mt-4 bg-white rounded-lg shadow-lg py-4 absolute left-4 right-4 transition-all duration-200">
-            <div className="flex flex-col space-y-3 px-4">
-              {['services', 'about', 'testimonials', 'contact'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="text-dark font-medium py-2 hover:text-primary transition-colors text-left capitalize"
-                >
-                  {item === 'testimonials'
-                    ? 'Depoimentos'
-                    : item === 'services'
-                    ? 'Serviços'
-                    : item === 'about'
-                    ? 'Sobre'
-                    : 'Contato'}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+        <div className="mt-12 pt-8 border-t border-white/10 text-center">
+          <p className="text-white/50">
+            &copy; {currentYear} LICITUM Technology Solutions. Todos os direitos reservados.
+          </p>
+        </div>
       </div>
-    </nav>
+    </footer>
   );
 };
 
-export default Navbar;
+export default Footer;
