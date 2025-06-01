@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
                     href="tel:+5500000000000" 
                     className="text-primary hover:text-primary-dark transition-colors"
                   >
-                    (83) 99924-5858
+                    (83) 99676-8141
                   </a>
                 </div>
               </div>
